@@ -1,0 +1,14 @@
+export { SiteHeader } from "./site-header";
+export { Hero } from "./hero";
+export { HighlightStrip } from "./highlight-strip";
+export { ManualVsAutomated } from "./manual-vs-automated";
+export { EgramswarajContext } from "./egramswaraj-context";
+export { HowItWorks } from "./how-it-works";
+export { SoftwareScreens } from "./software-screens";
+export { CommonDifferences } from "./common-differences";
+export { Features } from "./features";
+export { Testimonials } from "./testimonials";
+export { Trial } from "./trial";
+export { Faq } from "./faq";
+export { Contact } from "./contact";
+export { SiteFooter } from "./site-footer";
