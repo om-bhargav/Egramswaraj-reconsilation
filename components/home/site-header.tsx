@@ -15,11 +15,12 @@ import {
 import { Wrap } from "./section";
 import { DownloadTrialButton } from "./cta-link";
 import { NAV_LINKS } from "./site-data";
+import Link from "next/link";
 
 function Brand({ small = false }: { small?: boolean }) {
   return (
-    <a
-      href="#top"
+    <Link
+      href="/"
       aria-label="eGramSwaraj Automation, back to top"
       className="flex min-w-0 items-center gap-2.5 text-[15.5px] font-extrabold tracking-[-0.015em] text-navy sm:text-[17px]"
     >
@@ -35,7 +36,7 @@ function Brand({ small = false }: { small?: boolean }) {
             : "size-10 flex-none object-contain lg:size-11"
         }
       />
-    </a>
+    </Link>
   );
 }
 
@@ -51,12 +52,12 @@ function SiteHeader() {
           <ul className="flex list-none gap-[26px] p-0">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="text-[15px] font-medium text-subtle no-underline transition-colors hover:text-navy"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -87,7 +88,7 @@ function SiteHeader() {
                     <SheetClose
                       nativeButton={false}
                       render={
-                        <a
+                        <Link
                           href={link.href}
                           className="block border-b border-line py-3.5 font-semibold text-navy no-underline"
                         />

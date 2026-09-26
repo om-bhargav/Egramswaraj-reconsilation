@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// A message sent through the public contact form.
+model ContactRequest {
+  id      String @id @default(cuid())
+  name    String
+  email   String
+  phone   String
+  message String
+
+  /// The optional screenshot, held in Cloudinary: the delivery URL, the public
+  /// id it is stored under (needed to transform or delete it later), and the
+  /// name of the file the sender picked.
+  imageUrl      String?
+  imagePublicId String?
+  imageName     String?
+
+  /// Set once an admin has answered the request.
+  replied Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([createdAt])
+  @@index([replied])
+}
+
+/// Someone who can sign in to the admin area.
+model Admin {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  /// Always a hash, never the plain password.
+  password String
+
+  createdAt DateTime @default(now())
+}
+
+
+/// A device that has used the software.
+model DeviceRecord {
+  id        String   @id @default(cuid())
+  mac       String   @unique
+  purchased Boolean  @default(false)
+  firstUsed DateTime
+  lastSeen  DateTime
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([purchased])
+  @@index([lastSeen])
+  @@index([firstUsed])
+}
